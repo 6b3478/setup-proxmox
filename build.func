@@ -265,9 +265,6 @@ review_configurations() {
     echo "Memory: $(highlight "${VM_MEM}GB")"
     echo "Disk: $(highlight "${VM_DISK}G")"
     echo "Network: $(highlight "$VM_NET")"
-    if [[ -n "$VM_NETIP" ]]; then
-        echo "IP: $(highlight "$VM_NETIP")"
-    fi
 }
 
 setup_ssh_keys() {
