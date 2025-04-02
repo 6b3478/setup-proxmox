@@ -10,9 +10,9 @@ VM_ID=""
 VM_IP=""
 if [[ $SCRIPT_TYPE != "LXC" ]]; then
     IS_LXC=0
-    VM_CORES=8
-    VM_MEM=8192
-    VM_DISK="80"
+    VM_CORES=1
+    VM_MEM=2048
+    VM_DISK="10"
 else
     IS_LXC=1
     VM_CORES=4
