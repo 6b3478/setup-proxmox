@@ -189,13 +189,13 @@ configure_os_settings() {
         OS_SOURCE="https://cloud.debian.org/images/cloud/$OS_DISTRO/latest/"
         OS_IMAGE_LINK="${OS_SOURCE}debian-$OS_VERSION-genericcloud-amd64.qcow2"
     elif [[ "$SCRIPT_NAME" == "vm-linux.sh" && "$OS_NAME" == "ubuntu" ]]; then
-        if [[ ! $version =~ ^[0-9]+\.[0-9]+$ ]]; then
+        if [[ ! $OS_VERSION =~ ^[0-9]+\.[0-9]+$ ]]; then
             error "$OS_NAME $OS_VERSION not supported (must be format XX.XX)"
         fi
         OS_SOURCE="https://cloud-images.ubuntu.com/releases/$OS_VERSION/release/"
         OS_IMAGE_LINK="${OS_SOURCE}ubuntu-$OS_VERSION-server-cloudimg-amd64.img"
     elif [[ "$SCRIPT_NAME" == "vm-linux.sh" && "$OS_NAME" == "alpine" ]]; then
-        if [[ ! $version =~ ^[0-9]+\.[0-9]+$ ]]; then
+        if [[ ! $OS_VERSION =~ ^[0-9]+\.[0-9]+$ ]]; then
             error "$OS_NAME $OS_VERSION not supported (must be format X.XX)"
         fi
         OS_SOURCE="https://dl-cdn.alpinelinux.org/alpine/v$OS_VERSION/releases/cloud/"
