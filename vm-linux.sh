@@ -5,7 +5,7 @@ export SCRIPT_NAME="vm-linux.sh"
 if [[ -f "$(dirname "$0")/build.func" ]]; then
     source "$(dirname "$0")/build.func"
 else
-    source <(wget -qO- https://raw.githubusercontent.com/tnt1232007/setup-proxmox/refs/heads/main/build.func)
+    source <(wget -qO- https://raw.githubusercontent.com/6b3478/setup-proxmox/refs/heads/main/build.func)
 fi
 print_help "$(basename "$0")" "$@"
 parse_input "$@"
