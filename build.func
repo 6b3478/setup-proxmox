@@ -258,6 +258,7 @@ configure_network_settings() {
 
     if [[ -n "$VM_IP" ]]; then
         VM_NETIP="ip=$VM_IP/24,gw=192.168.1.1"
+    fi
 }
 
 review_configurations() {
