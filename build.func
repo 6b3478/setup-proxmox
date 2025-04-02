@@ -110,9 +110,9 @@ check_noop() {
 configure_host_storage() {
     echo "🔧 Configuring host storage..."
     HOST_VM_STORAGE="local-lvm"
-    HOST_ISO_STORAGE="nas-synology-external"
-    MOUNT_STORAGE="/mnt/pve/$HOST_ISO_STORAGE"
-    if ! pvesm status | grep -q "^$HOST_VM_STORAGE"; then
+    HOST_ISO_STORAGE="local"
+    MOUNT_STORAGE="/var/lib/vz"
+    if ! pvesm status | grep -q "^$HOST_VM_STORAGE"; vzthen
         error "Storage '$HOST_VM_STORAGE' not found"
     fi
     if ! pvesm status | grep -q "^$HOST_ISO_STORAGE"; then
