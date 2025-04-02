@@ -8,6 +8,8 @@ OS_VERSION=""
 OS_DISTRO=""
 VM_ID=""
 VM_IP=""
+SCRIPT_TYPE=""
+
 if [[ $SCRIPT_TYPE != "LXC" ]]; then
     IS_LXC=0
     VM_CORES=1
