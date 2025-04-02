@@ -112,7 +112,7 @@ configure_host_storage() {
     HOST_VM_STORAGE="local-lvm"
     HOST_ISO_STORAGE="local"
     MOUNT_STORAGE="/var/lib/vz"
-    if ! pvesm status | grep -q "^$HOST_VM_STORAGE"; vzthen
+    if ! pvesm status | grep -q "^$HOST_VM_STORAGE"; then
         error "Storage '$HOST_VM_STORAGE' not found"
     fi
     if ! pvesm status | grep -q "^$HOST_ISO_STORAGE"; then
