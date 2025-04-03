@@ -32,7 +32,7 @@ download_vm_image() {
     if ! test -f "$VM_SUPPORT_IMAGE"; then
         VM_SUPPORT_IMAGE_LINK=$(echo "$VM_SUPPORT_IMAGE_INFO" | grep "browser_download_url" | cut -d'"' -f4)
         echo "⬇️ Downloading from $VM_SUPPORT_IMAGE_LINK..."
-        wget "$VM_SUPPORT_IMAGE_LINK"
+        aria2c --summary-interval=0 --optimize-concurrent-downloads=true -c -x 16 -j 64 -s 64 --truncate-console-readout=true "$VM_IMAGE" --log - --log-level=notice "$OS_IMAGE_LINK"
     fi
 }
 
