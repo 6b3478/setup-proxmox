@@ -22,7 +22,7 @@ download_vm_image() {
     VM_IMAGE="$OS_NAME-$OS_DISTRO-$OS_VERSION.qcow2"
     if ! test -f "$VM_IMAGE"; then
         echo "⬇️ Downloading from $OS_IMAGE_LINK..."
-        wget "$OS_IMAGE_LINK" -O "$VM_IMAGE"
+        aria2c --summary-interval=0 --optimize-concurrent-downloads=true -c -x 16 -j 64 -s 64 --truncate-console-readout=true "$VM_IMAGE" --log - --log-level=notice "$OS_IMAGE_LINK"
         virt-customize -a "$VM_IMAGE" --install qemu-guest-agent
     fi
 }
