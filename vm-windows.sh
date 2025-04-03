@@ -22,7 +22,7 @@ download_vm_image() {
     VM_IMAGE="$OS_NAME-$OS_VERSION.iso"
     if ! test -f "$VM_IMAGE"; then
         echo "⬇️ Downloading from $OS_IMAGE_LINK..."
-        wget "$OS_IMAGE_LINK" -O "$VM_IMAGE"
+        aria2c --summary-interval=0 --optimize-concurrent-downloads=true -c -x 16 -j 64 -s 64 --truncate-console-readout=true -o "$VM_IMAGE" --log - --log-level=notice "$OS_IMAGE_LINK"
     fi
 
     echo "🔧 Checking if Support image exists..."
@@ -32,7 +32,7 @@ download_vm_image() {
     if ! test -f "$VM_SUPPORT_IMAGE"; then
         VM_SUPPORT_IMAGE_LINK=$(echo "$VM_SUPPORT_IMAGE_INFO" | grep "browser_download_url" | cut -d'"' -f4)
         echo "⬇️ Downloading from $VM_SUPPORT_IMAGE_LINK..."
-        aria2c --summary-interval=0 --optimize-concurrent-downloads=true -c -x 16 -j 64 -s 64 --truncate-console-readout=true -o "$VM_IMAGE" --log - --log-level=notice "$OS_IMAGE_LINK"
+        aria2c --summary-interval=3 --optimize-concurrent-downloads=true -c -x 16 -j 64 -s 64 --truncate-console-readout=true -o "$VM_SUPPORT_IMAGE" --log - --log-level=notice "$VM_SUPPORT_IMAGE_LINK"
     fi
 }
 
